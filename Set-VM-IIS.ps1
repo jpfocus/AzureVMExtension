@@ -36,11 +36,9 @@ if (-not (Test-Path $folder_video)) {
 
 $imagevalue = "Images: " + $($env:computername)
 $imageHtmlPath = "$folder_img\test.htm" 
-# Add-Content -Path $imageHtmlPath -Value $imagevalue
 $imagevalue | Out-String | Out-File $imageHtmlPath -Encoding utf8 
 
 
 $videovalue = "Video: " + $($env:computername)
 $videoHtmlPath = "$folder_video\test.htm" 
-# Add-Content -Path "$folder_video\test.htm" -Value $videovalue
 $videovalue | Out-String | Out-File $videoHtmlPath -Encoding utf8 
