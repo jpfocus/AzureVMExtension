@@ -30,21 +30,47 @@ if ($null -eq $netFirewallRule2) {
 # create index page
 Add-Content -Path "C:\inetpub\wwwroot\Default.htm" -Value $($env:computername)
 
-$folder_img = "C:\inetpub\wwwroot\images"
-if (-not (Test-Path $folder_img)) { New-Item -ItemType directory -Path $folder_img }
-"Images: " + $($env:computername) | Out-String | Out-File "$folder_img\test.htm"  -Encoding utf8 
+
+$rootFolder = "C:\inetpub\wwwroot"
+
+$curFolderName = "images"
+$curFolder = "$($rootFolder)\$($curFolderName)"
+if (-not (Test-Path $curFolder)) { New-Item -ItemType directory -Path $curFolder }
+"$($curFolderName): " + $($env:computername) | Out-String | Out-File "$curFolder\test.htm" -Encoding utf8 
+
+$curFolderName = "videos"
+$curFolder = "$($rootFolder)\$($curFolderName)"
+if (-not (Test-Path $curFolder)) { New-Item -ItemType directory -Path $curFolder }
+"$($curFolderName): " + $($env:computername) | Out-String | Out-File "$curFolder\test.htm" -Encoding utf8 
+
+$curFolderName = "folder1"
+$curFolder = "$($rootFolder)\$($curFolderName)"
+if (-not (Test-Path $curFolder)) { New-Item -ItemType directory -Path $curFolder }
+"$($curFolderName): " + $($env:computername) | Out-String | Out-File "$curFolder\test.htm" -Encoding utf8 
+
+$curFolderName = "folder2"
+$curFolder = "$($rootFolder)\$($curFolderName)"
+if (-not (Test-Path $curFolder)) { New-Item -ItemType directory -Path $curFolder }
+"$($curFolderName): " + $($env:computername) | Out-String | Out-File "$curFolder\test.htm" -Encoding utf8 
 
 
-$folder_videos = "C:\inetpub\wwwroot\videos"
-if (-not (Test-Path $folder_videos)) { New-Item -ItemType directory -Path $folder_videos }
-"Videos: " + $($env:computername) | Out-String | Out-File "$folder_videos\test.htm"  -Encoding utf8 
+
+# $folder_img = "C:\inetpub\wwwroot\images"
+# $curFolder = $folder_img
+# if (-not (Test-Path $curFolder)) { New-Item -ItemType directory -Path $curFolder }
+# "Images: " + $($env:computername) | Out-String | Out-File "$curFolder\test.htm"  -Encoding utf8 
 
 
-$folder1 = "C:\inetpub\wwwroot\folder1"
-if (-not (Test-Path $folder1)) { New-Item -ItemType directory -Path $folder1 }
-"$folder1<br>" + $($env:computername) | Out-String | Out-File "$folder1\test.htm" -Encoding utf8 
+# $folder_videos = "C:\inetpub\wwwroot\videos"
+# if (-not (Test-Path $folder_videos)) { New-Item -ItemType directory -Path $folder_videos }
+# "Videos: " + $($env:computername) | Out-String | Out-File "$folder_videos\test.htm"  -Encoding utf8 
 
 
-$folder2 = "C:\inetpub\wwwroot\folder2"
-if (-not (Test-Path $folder2)) { New-Item -ItemType directory -Path $folder2 }
-"$folder2<br>" + $($env:computername) | Out-String | Out-File "$folder2\test.htm" -Encoding utf8 
+# $folder1 = "C:\inetpub\wwwroot\folder1"
+# if (-not (Test-Path $folder1)) { New-Item -ItemType directory -Path $folder1 }
+# "$folder1<br>" + $($env:computername) | Out-String | Out-File "$folder1\test.htm" -Encoding utf8 
+
+
+# $folder2 = "C:\inetpub\wwwroot\folder2"
+# if (-not (Test-Path $folder2)) { New-Item -ItemType directory -Path $folder2 }
+# "$folder2<br>" + $($env:computername) | Out-String | Out-File "$folder2\test.htm" -Encoding utf8 
