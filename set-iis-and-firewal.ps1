@@ -53,6 +53,18 @@ $curFolder = "$($rootFolder)\$($curFolderName)"
 if (-not (Test-Path $curFolder)) { New-Item -ItemType directory -Path $curFolder }
 "$($curFolderName): " + $($env:computername) | Out-String | Out-File "$curFolder\test.htm" -Encoding utf8 
 
+if ($($env:computername).ToLower().Contains("vm1")) {
+    $curFolderName = "folder3"
+    $curFolder = "$($rootFolder)\$($curFolderName)"
+    if (-not (Test-Path $curFolder)) { New-Item -ItemType directory -Path $curFolder }
+    "$($curFolderName): " + $($env:computername) | Out-String | Out-File "$curFolder\test.htm" -Encoding utf8 
+}
+else {
+    $curFolderName = "folder4"
+    $curFolder = "$($rootFolder)\$($curFolderName)"
+    if (-not (Test-Path $curFolder)) { New-Item -ItemType directory -Path $curFolder }
+    "$($curFolderName): " + $($env:computername) | Out-String | Out-File "$curFolder\test.htm" -Encoding utf8 
+}
 
 
 # $folder_img = "C:\inetpub\wwwroot\images"
