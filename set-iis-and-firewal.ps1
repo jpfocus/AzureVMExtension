@@ -17,7 +17,7 @@ if ($null -eq $webBinding2) {
 }
 
 
-# allow pc firewall 8081,8082 port inbound
+# allow pc firewall 8081,8082,81 port inbound
 $netFirewallRule1 = Get-NetFirewallRule -DisplayName "iis-8081" -ErrorVariable "notPresent" -ErrorAction SilentlyContinue
 if ($null -eq $netFirewallRule1) {
     $netFirewallRule1 = New-NetFirewallRule -DisplayName "iis-8081" -Direction Inbound -LocalPort 8081 -Protocol TCP -Action Allow
@@ -25,6 +25,11 @@ if ($null -eq $netFirewallRule1) {
 $netFirewallRule2 = Get-NetFirewallRule -DisplayName "iis-8082" -ErrorVariable "notPresent" -ErrorAction SilentlyContinue
 if ($null -eq $netFirewallRule2) {
     $netFirewallRule2 = New-NetFirewallRule -DisplayName "iis-8082" -Direction Inbound -LocalPort 8082 -Protocol TCP -Action Allow
+}
+# prepared for new-site , not bind port_81 to the [Default Web Site]
+$netFirewallRule3 = Get-NetFirewallRule -DisplayName "iis-81" -ErrorVariable "notPresent" -ErrorAction SilentlyContinue
+if ($null -eq $netFirewallRule3) {
+    $netFirewallRule3 = New-NetFirewallRule -DisplayName "iis-81" -Direction Inbound -LocalPort 81 -Protocol TCP -Action Allow
 }
 
 # create index page
